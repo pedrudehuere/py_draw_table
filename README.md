@@ -41,4 +41,5 @@ TODO
 ----
 - [ ] headers alignment
 - [ ] accept data as list
-- [ ] parametrable table characters (+, |, -, etc.)
+- [x] parametrable table characters (+, |, -, etc.)
+- [ ] accept list of strings as values (same as fields containing \n, will result in multiple lines)
