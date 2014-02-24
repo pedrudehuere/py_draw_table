@@ -20,6 +20,7 @@ cell_fill_char = " "
 cell_sep_char = "|"
 DEFAULT_FIELD = "N/a"
 
+
 def convert_newline(text):
     """Replaces non-unix newlines (\r, \n\r) with \n
     :param text: the string to be converted
@@ -113,25 +114,12 @@ def draw_table(headers, columns, data):
 #### test zone ########################################################################################################
 if __name__ == '__main__':
 
-    out_file = 'test.table'
-    fields_table_columns = ('field_name', 'type', 'required', 'default_value', 'description')
-    fields_table_headers = ("Field name", "Type", "Required", "Default", "Description")
-    data = [{
-            'field_name': "cazzo",
-            'type': "figa",
-            'required': "dioporco",
-            'default_value': "mavaffanculo",
-            'description': "porcodio"},
-            {
-            'field_name': "cazzo",
-            'type': "figaladra",
-            'required': "dioporco",
-            'default_value': "mavaffanculo",
-            'description': "puttanaeva"},
-            {
-            'field_name': "cazzo",
-            'type': "figa",
-            'required': "porcodioporcodioporco",
-            'default_value': "mavaffanculo",
-            'description': "porcodio"}]
-    print(draw_table(fields_table_headers, fields_table_columns, data))
+  headers = ["First name", "Last name", "Address"]
+  columns = ['first_name', 'last_name', 'address']
+  data = [
+    {'first_name': "Rick", 'last_name': "Nash", 'address': "IceHockey Road\n7260 Davos"},
+    {'first_name': "Grumpy", 'last_name': "Cat", 'address': "Reddit\nThe frontpage of\nthe internet"},
+  ]
+
+  table_str = draw_table(headers, columns, data)
+  print(table_str)
