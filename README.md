@@ -4,7 +4,9 @@ py_simple_table
 Simple ASCII table in Python
 
 
-example usage:
+
+example usage
+-------------
 ```python
 
   import simple_table as table
@@ -34,3 +36,9 @@ will give:
   |            |           | the internet     |
   +------------+-----------+------------------+
 ```
+
+TODO
+----
+- [ ] headers alignment
+- [ ] accept data as list
+- [ ] parametrable table characters (+, |, -, etc.)
