@@ -7,7 +7,7 @@ Simple ASCII table in Python
 example usage:
 ```python
 
-  import py_simple_table as table
+  import simple_table as table
 
   headers = ["First name", "Last name", "Address"]
   columns = ['first_name', 'last_name', 'address']
