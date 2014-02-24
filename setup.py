@@ -1,6 +1,5 @@
-from setuptools import setup, find_packages
-
-VERSION = "0.2"
+from setuptools import setup
+from simple_table import VERSION
 
 setup(
     name='py_simple_table',
