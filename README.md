@@ -2,7 +2,7 @@ py_simple_table
 ===============
 
 Simple ASCII table in Python
-
+(tested on Python3.3 only)
 
 
 example usage
