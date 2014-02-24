@@ -5,6 +5,7 @@ Simple ASCII table in Python
 
 
 example usage:
+```python
 
   import py_simple_table as table
 
@@ -17,9 +18,11 @@ example usage:
 
   table_str = table.draw_table(headers, columns, data)
   print(table_str)
+```
 
 will give:
 
+```
   +------------+-----------+------------------+
   | First name | Last name | Address          |
   +============+===========+==================+
@@ -30,3 +33,4 @@ will give:
   |            |           | The frontpage of |
   |            |           | the internet     |
   +------------+-----------+------------------+
+```
