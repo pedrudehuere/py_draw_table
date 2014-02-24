@@ -2,9 +2,12 @@ py_simple_table
 ===============
 
 Simple ASCII table in Python
+(tested on Python3.3 only)
 
+Useful to create tables in reStructuredText (for example for Sphinx)
 
-example usage:
+example usage
+-------------
 ```python
 
   import simple_table as table
@@ -34,3 +37,10 @@ will give:
   |            |           | the internet     |
   +------------+-----------+------------------+
 ```
+
+TODO
+----
+- [ ] headers alignment
+- [ ] accept data as list
+- [x] parametrable table characters (+, |, -, etc.)
+- [ ] accept list of strings as values (same as fields containing \n, will result in multiple lines)
