@@ -1,13 +1,24 @@
+# -*- coding: utf8 -*-
+
+import os.path
 from setuptools import setup
-from simple_table import VERSION
+
+
+# getting version
+version = {}
+here = os.path.dirname(__file__)
+with open(os.path.join(here, 'draw_table', '__version__.py')) as f:
+    exec(f.read(), version)
+version = version['version']
+
 
 setup(
-    name='py_simple_table',
-    version=VERSION,
-    packages=['simple_table'],
-    url='https://github.com/pedrudehuere/py_simple_table',
+    name='draw_table',
+    version=version,
+    packages=['draw_table'],
+    url='https://github.com/pedrudehuere/py_draw_table',
     license='MIT',
     author='Andrea Peter',
-    author_email='',
-    description='Simple ASCII table in Python',
+    author_email='pedrudehuere@hotmail.com',
+    description='Simple string based table for Python 3',
 )
