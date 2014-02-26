@@ -8,46 +8,46 @@ Useful to create tables in reStructuredText (for example for Sphinx)
 
 example usage
 -------------
+
 ```python
+#### with dictionaries ###################################################
+_headers = ["First name", "Last name", "Address"]
+_column_keys = ['first_name', 'last_name', 'address']
+_table_data = [
+    {'first_name': "Rick", 'last_name': "Nash", 'address': "IceHockey Road\n7260 Davos"},
+    {'first_name': "Grumpy", 'last_name': "Cat", 'address': "Reddit\nThe frontpage of\nthe internet"},
+]
 
-  #### with dictionaries ###################################################
-  _headers = ["First name", "Last name", "Address"]
-  _column_keys = ['first_name', 'last_name', 'address']
-  _table_data = [
-      {'first_name': "Rick", 'last_name': "Nash", 'address': "IceHockey Road\n7260 Davos"},
-      {'first_name': "Grumpy", 'last_name': "Cat", 'address': "Reddit\nThe frontpage of\nthe internet"},
-  ]
+table_str_dict = draw_table(_headers,
+                            _table_data,
+                            column_keys=_column_keys)
+print(table_str_dict)
 
-  table_str_dict = draw_table(_headers,
-                              _table_data,
-                              column_keys=_column_keys)
-  print(table_str_dict)
-
-  #### with lists (and custom characters) ##################################
-  # just choose some fancy characters (or use default ones)
-  _row_sep_char = "'"
-  _headers_row_sep_char = "`"
-  _corner_char = "°"
-  _cell_sep_char = ":"
-  _cell_fill_char = " "
-  _min_h_padding = 3
+#### with lists (and custom characters) ##################################
+# just choose some fancy characters (or use default ones)
+_row_sep_char = "'"
+_headers_row_sep_char = "`"
+_corner_char = "°"
+_cell_sep_char = ":"
+_cell_fill_char = " "
+_min_h_padding = 3
 
 
-  _headers = ["First name", "Last name", "Address"]
-  _table_data = [
-      ["Rick", "Nash", "IceHockey Road\n7260 Davos"],
-      ["Grumpy","Cat", "Reddit\nThe frontpage of\nthe internet"],
-  ]
+_headers = ["First name", "Last name", "Address"]
+_table_data = [
+    ["Rick", "Nash", "IceHockey Road\n7260 Davos"],
+    ["Grumpy","Cat", "Reddit\nThe frontpage of\nthe internet"],
+]
 
-  table_str_lists = draw_table(_headers,
-                               _table_data,
-                               _row_sep_char,
-                               _headers_row_sep_char,
-                               _corner_char,
-                               _cell_sep_char,
-                               _cell_fill_char,
-                               _min_h_padding)
-  print(table_str_lists)
+table_str_lists = draw_table(_headers,
+                             _table_data,
+                             _row_sep_char,
+                             _headers_row_sep_char,
+                             _corner_char,
+                             _cell_sep_char,
+                             _cell_fill_char,
+                             _min_h_padding)
+print(table_str_lists)
 ```
 
 will give:
