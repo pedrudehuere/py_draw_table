@@ -4,13 +4,21 @@ py_simple_table
 Simple ASCII table in Python
 (tested on Python3.3 only)
 
-Useful to create tables in reStructuredText (for example for Sphinx)
+Creates customizable ASCII tables, by default creates reStructuredText grid tables.
+
+Customizable values are:
+ * table structure characters 
+ * horizontal cell padding
+
 
 example usage
 -------------
 
 ```python
 #### with dictionaries ###################################################
+
+# with deafult table format values: creates a reStructuredText grid table
+
 _headers = ["First name", "Last name", "Address"]
 _column_keys = ['first_name', 'last_name', 'address']
 _table_data = [
@@ -24,6 +32,7 @@ table_str_dict = draw_table(_headers,
 print(table_str_dict)
 
 #### with lists (and custom characters) ##################################
+
 # just choose some fancy characters (or use default ones)
 _row_sep_char = "'"
 _headers_row_sep_char = "`"
@@ -79,6 +88,7 @@ will give:
 TODO
 ----
 - [ ] headers alignment
-- [ ] accept data as list
+- [x] accept data as list
 - [x] parametrable table characters (+, |, -, etc.)
 - [ ] accept list of strings as values (same as fields containing \n, will result in multiple lines)
+- [ ] asymmetric vertical cell padding
