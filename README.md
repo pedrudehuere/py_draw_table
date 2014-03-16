@@ -85,10 +85,3 @@ will give:
   °''''''''''''''''°'''''''''''''''°''''''''''''''''''''''°
 ```
 
-TODO
-----
-- [ ] headers alignment
-- [x] accept data as list
-- [x] parametrable table characters (+, |, -, etc.)
-- [ ] accept list of strings as values (same as fields containing \n, will result in multiple lines)
-- [ ] asymmetric vertical cell padding
