@@ -18,7 +18,7 @@ CORNER_CHAR = "+"
 CELL_FILL_CHAR = " "
 CELL_SEP_CHAR = "|"
 MIN_H_PADDING = 1   # the minimum horizontal padding on each side of a cell value
-DEFAULT_FIELD = "N/a"
+DEFAULT_FIELD = "-"
 
 
 def convert_newline(text):
@@ -67,7 +67,7 @@ def build_row(column_widths, row, cell_sep_char, cell_fill_char, min_horizontal_
     :returns: a table row string
     """
     # first we split cell-values in a list of lines in order to support multi-line cell-values
-    row = [convert_newline(value).split('\n') for value in row]
+    row = [convert_newline(str(value)).split('\n') for value in row]
 
     # getting row height first (counting newlines in each cell value)
     row_height = 1
@@ -78,7 +78,7 @@ def build_row(column_widths, row, cell_sep_char, cell_fill_char, min_horizontal_
     lines = []  # contains lines (to print) of table row
     for line_index in range(row_height):    # for each line
         line = []
-        for column_index, _ in enumerate(_column_keys):
+        for column_index in range(len(row)):
             try:
                 value = row[column_index][line_index]
             except IndexError:
@@ -112,7 +112,7 @@ def get_column_widths(table_data, headers, min_horizontal_padding):
     column_widths = [0] * len(table_data[0])  # all zeroes
     for row in table_data:
         for column_index, cell_value in enumerate(row):
-            for line in cell_value.split('\n'):
+            for line in str(cell_value).split('\n'):
                 column_widths[column_index] = max(column_widths[column_index],
                                                   len(str(line)) + min_horizontal_padding*2)
 
@@ -124,7 +124,8 @@ def get_column_widths(table_data, headers, min_horizontal_padding):
 
 
 def draw_table(headers, table_data, row_sep_char=None, headers_row_sep_char=None, corner_char=None,
-               cell_sep_char=None, cell_fill_char=None, min_horizontal_padding=None, column_keys=None):
+               cell_sep_char=None, cell_fill_char=None, min_horizontal_padding=None, column_keys=None,
+               default_field=None):
     """
     Builds a string containing a printable table
     :param headers: A list of table headers
@@ -139,19 +140,23 @@ def draw_table(headers, table_data, row_sep_char=None, headers_row_sep_char=None
                         (if not given table data is supposed to be a list of lists)
     :return: a string containing a printable table
     """
-    # if we got a list of dictionaries: make list of lists
-    if column_keys is not None:
-        if len(headers) != len(_column_keys):
-            raise ValueError("headers and columns must have same length!")
-        table_data = [[row_dict[column_key] for column_key in column_keys] for row_dict in table_data]
+    if not table_data:
+        return ""
 
     # getting table parameters
+    default_field = default_field or DEFAULT_FIELD
     row_sep_char = row_sep_char or ROW_SEP_CHAR
     headers_row_sep_char = headers_row_sep_char or HEADERS_ROW_SEP_CHAR
     corner_char = corner_char or CORNER_CHAR
     cell_sep_char = cell_sep_char or CELL_SEP_CHAR
     cell_fill_char = cell_fill_char or CELL_FILL_CHAR
     min_horizontal_padding = min_horizontal_padding or MIN_H_PADDING
+
+    # if we got a list of dictionaries: make list of lists
+    if column_keys is not None:
+        if len(headers) != len(column_keys):
+            raise ValueError("headers and columns must have same length!")
+        table_data = [[row_dict.get(column_key, default_field) for column_key in column_keys] for row_dict in table_data]
 
     if any([len(char) > 1 for char in (row_sep_char, headers_row_sep_char, corner_char,
                                        cell_sep_char, cell_fill_char)]):
@@ -174,7 +179,7 @@ if __name__ == '__main__':
 
     #### with dictionaries ###################################################
     _headers = ["First name", "Last name", "Address"]
-    _column_keys = ['first_name', 'last_name', 'address']
+    column_keys = ['first_name', 'last_name', 'address']
     _table_data = [
         {'first_name': "Rick", 'last_name': "Nash", 'address': "IceHockey Road\n7260 Davos"},
         {'first_name': "Grumpy", 'last_name': "Cat", 'address': "Reddit\nThe frontpage of\nthe internet"},
@@ -182,7 +187,7 @@ if __name__ == '__main__':
 
     table_str_dict = draw_table(_headers,
                                 _table_data,
-                                column_keys=_column_keys)
+                                column_keys=column_keys)
     print(table_str_dict)
 
     #### with lists (and custom characters) ##################################
