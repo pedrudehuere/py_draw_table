@@ -18,7 +18,7 @@ Features:
 ## example usage
 
 ```python
-from simple_table import draw_table
+from draw_table import draw_table
 
 # ### with dictionaries ##################################################
 headers = ["First name", "Last name", "Address"]
@@ -61,7 +61,7 @@ will give:
 ```
 
 ```python
-from simple_table import draw_table
+from draw_table import draw_table
 
 # ### with lists (and custom characters) #################################
 # just choose some fancy characters (or use default ones)
